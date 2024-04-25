@@ -5,19 +5,17 @@
 Вложенной операцией считается аргумент ast.UnaryOp, ast.BinOp, ast.Call или ast.Return, не являющийся ast.Name или ast.Constant.
 
 ## Пример исходного кода:
-<p>
-    def foo(a, b, c, d):
+<pre>
+def foo(a, b, c, d):
     return baz(-a, c**(a - b) + d, k=A + 123)
-</p>
-
 
 def bar(x):
     a = x * 2 + sin(x)
     b = a
     return a, b, x + 1
-
+</pre>
 ## Ожидаемый результат:
-
+<pre>
 def foo(a, b, c, d):
     v0 = -a
     v1 = a - b
@@ -34,3 +32,4 @@ def bar(x):
     b = a # (ast.Name = ast.Name) без изменений
     v3 = x + 1
     return a, b, v3
+</pre>
